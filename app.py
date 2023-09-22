@@ -79,9 +79,9 @@ if __name__=="__main__":
             ],
             inputs=[prompt, width, sync_weight, sync_thres, seed],
             outputs=[
-                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png")))],
-                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png")))],
-                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png")))],
+                [gr.Gallery(join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png"))],
+                [gr.Gallery(join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png"))],
+                [gr.Gallery(join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png"))],
             ]
         )
 
