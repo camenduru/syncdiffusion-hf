@@ -27,13 +27,13 @@ def run_inference(
     img = syncdiffusion.sample_syncdiffusion(
         prompts = prompt,
         negative_prompts = "",
-        height = height,
+        height = 512,
         width = width,
         num_inference_steps = 50,
         guidance_scale = 7.5,
         sync_weight = sync_weight,
-        sync_decay_rate = sync_decay_rate,
-        sync_freq = sync_freq,
+        sync_decay_rate = 0.99,
+        sync_freq = 1,
         sync_thres = sync_thres,
         stride = 16
         )
