@@ -6,3 +6,4 @@ numpy==1.24.3
 lpips
 accelerate
 tqdm
+gradio==3.34.0
