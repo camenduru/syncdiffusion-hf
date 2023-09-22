@@ -4,6 +4,7 @@ An interactive demo for text-guided panorama generation.
 """
 import os
 from os.path import join
+from PIL import Image
 import torch
 import gradio as gr
 
@@ -78,9 +79,9 @@ if __name__=="__main__":
             ],
             inputs=[prompt, width, sync_weight, sync_thres, seed],
             outputs=[
-                join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png"),
-                join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png"),
-                join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png"),
+                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png")))],
+                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png")))],
+                [gr.Image(Image.open(join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png")))],
             ]
         )
 
