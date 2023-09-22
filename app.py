@@ -8,6 +8,12 @@ import gradio as gr
 from syncdiffusion.syncdiffusion_model import SyncDiffusion
 from syncdiffusion.utils import seed_everything
 
+# set device
+device = torch.device("cuda")
+
+# load SyncDiffusion model
+syncdiffusion = SyncDiffusion(device, sd_version="2.0")
+
 def run_inference(
         prompt: str,  
         width: int = 2048,
@@ -15,14 +21,8 @@ def run_inference(
         sync_thres: int = 5,
         seed: int = 0
     ):
-    # set device
-    device = torch.device = torch.device("cuda")
-
     # set random seed
     seed_everything(seed)
-
-    # load SyncDiffusion model
-    syncdiffusion = SyncDiffusion(device, sd_version="2.0")
 
     img = syncdiffusion.sample_syncdiffusion(
         prompts = prompt,
@@ -61,7 +61,7 @@ if __name__=="__main__":
                 prompt = gr.Textbox(label="Text Prompt", value='a cinematic view of a castle in the sunset')
                 width = gr.Slider(label="Width", minimum=512, maximum=4096, value=2048, step=128)
                 sync_weight = gr.Slider(label="Sync Weight", minimum=0.0, maximum=30.0, value=20.0, step=5.0)
-                sync_thres = gr.Slider(label="Sync Threshold (If N, apply SyncDiffusion for the first N steps)", minimum=0, maximum=50, value=5, step=1)
+                sync_thres = gr.Slider(label="Sync Threshold (If N, apply SyncDiffusion for the first N steps)", minimum=0, maximum=15, value=5, step=1)
                 seed = gr.Number(label="Seed", value=0)
 
             with gr.Column():
@@ -70,11 +70,11 @@ if __name__=="__main__":
         # display examples
         examples = gr.Examples(
             examples=[
-                'a cinematic view of a castle in the sunset',
-                'natural landscape in anime style illustration',
-                'a photo of a lake under the northern lights',
+                ['a cinematic view of a castle in the sunset', 2048, 20.0, 5, 1],
+                ['natural landscape in anime style illustration', 2048, 20.0, 5, 2],
+                ['a photo of a lake under the northern lights', 2048, 20.0, 5, 6]
             ],
-            inputs=[prompt],
+            inputs=[prompt, width, sync_weight, sync_thres, seed],
         )
 
         ips = [prompt, width, sync_weight, sync_thres, seed]
