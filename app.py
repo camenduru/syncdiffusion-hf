@@ -2,6 +2,8 @@
 app.py
 An interactive demo for text-guided panorama generation.
 """
+import os
+from os.path import join
 import torch
 import gradio as gr
 
@@ -59,7 +61,7 @@ if __name__=="__main__":
                 run_button = gr.Button(label="Generate")
 
                 prompt = gr.Textbox(label="Text Prompt", value='a cinematic view of a castle in the sunset')
-                width = gr.Slider(label="Width", minimum=512, maximum=4096, value=2048, step=128)
+                width = gr.Slider(label="Width", minimum=512, maximum=3072, value=2048, step=128)
                 sync_weight = gr.Slider(label="Sync Weight", minimum=0.0, maximum=30.0, value=20.0, step=5.0)
                 sync_thres = gr.Slider(label="Sync Threshold (If N, apply SyncDiffusion for the first N steps)", minimum=0, maximum=15, value=5, step=1)
                 seed = gr.Number(label="Seed", value=0)
@@ -75,6 +77,11 @@ if __name__=="__main__":
                 ['a photo of a lake under the northern lights', 2048, 20.0, 5, 6]
             ],
             inputs=[prompt, width, sync_weight, sync_thres, seed],
+            outputs=[
+                join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png"),
+                join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png"),
+                join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png"),
+            ]
         )
 
         ips = [prompt, width, sync_weight, sync_thres, seed]
