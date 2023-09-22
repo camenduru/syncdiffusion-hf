@@ -78,15 +78,23 @@ if __name__=="__main__":
                 ['a photo of a lake under the northern lights', 2048, 20.0, 5, 6]
             ],
             inputs=[prompt, width, sync_weight, sync_thres, seed],
-            outputs=[
-                [gr.Gallery(join("./assets", "result_castle_seed_1.png"))],
-                [gr.Gallery(join("./assets", "result_natural_seed_2.png"))],
-                [gr.Gallery(join("./assets", "result_northern_seed_6.png"))],
-                # [gr.Gallery(value=join("assets", "result_castle_seed_1.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
-                # [gr.Gallery(value=join("assets", "result_natural_seed_2.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
-                # [gr.Gallery(value=join("assets", "result_northern_seed_6.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
-            ]
         )
+
+        # display example images
+        with gr.Row():
+            gr.Image(Image.open(join("assets", "result_castle_seed_1.png")), label="Sample output 1")
+        with gr.Row():
+            gr.Textbox(label="Prompt", type="text", value="a cinematic view of a castle in the sunset")
+        
+        with gr.Row():
+            gr.Image(Image.open(join("assets", "result_landscape_seed_2.png")), label="Sample output 2")
+        with gr.Row():
+            gr.Textbox(label="Prompt", type="text", value="natural landscape in anime style illustration")
+        
+        with gr.Row():
+            gr.Image(Image.open(join("assets", "result_northern_lights_seed_6.png")), label="Sample output 3")
+        with gr.Row():
+            gr.Textbox(label="Prompt", type="text", value="a photo of a lake under the northern lights")
 
         ips = [prompt, width, sync_weight, sync_thres, seed]
         run_button.click(fn=run_inference, inputs=ips, outputs=[result_gallery])
