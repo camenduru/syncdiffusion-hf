@@ -79,9 +79,9 @@ if __name__=="__main__":
             ],
             inputs=[prompt, width, sync_weight, sync_thres, seed],
             outputs=[
-                [gr.Gallery(value=join(os.path.dirname(__file__), "assets", "result_castle_seed_1.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
-                [gr.Gallery(value=join(os.path.dirname(__file__), "assets", "result_natural_seed_2.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
-                [gr.Gallery(value=join(os.path.dirname(__file__), "assets", "result_northern_seed_6.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
+                [gr.Gallery(value=join("assets", "result_castle_seed_1.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
+                [gr.Gallery(value=join("assets", "result_natural_seed_2.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
+                [gr.Gallery(value=join("assets", "result_northern_seed_6.png"), label='Output', show_label=False, elem_id="gallery").style(grid=2, height='auto')],
             ]
         )
 
