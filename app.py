@@ -48,6 +48,7 @@ if __name__=="__main__":
     description_text = '''
     This demo features text-guided panorama generation from our work <a href="https://arxiv.org/abs/2306.05178">SyncDiffusion: Coherent Montage via Synchronized Joint Diffusions, NeurIPS 2023</a>.  
     Please refer to our <a href="https://syncdiffusion.github.io/">project page</a> for details.
+    (Note: Generation takes about 100 seconds for the default setting below, with the current A10G GPU.)
     '''
 
     # create UI        
@@ -87,12 +88,12 @@ if __name__=="__main__":
             gr.Textbox(label="Prompt", type="text", value="a cinematic view of a castle in the sunset")
         
         with gr.Row():
-            gr.Image(Image.open(join("assets", "result_landscape_seed_2.png")), label="Sample output 2")
+            gr.Image(Image.open(join("assets", "result_natural_seed_2.png")), label="Sample output 2")
         with gr.Row():
             gr.Textbox(label="Prompt", type="text", value="natural landscape in anime style illustration")
         
         with gr.Row():
-            gr.Image(Image.open(join("assets", "result_northern_lights_seed_6.png")), label="Sample output 3")
+            gr.Image(Image.open(join("assets", "result_northern_seed_6.png")), label="Sample output 3")
         with gr.Row():
             gr.Textbox(label="Prompt", type="text", value="a photo of a lake under the northern lights")
 
