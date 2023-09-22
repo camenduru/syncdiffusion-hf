@@ -9,12 +9,9 @@ from syncdiffusion.syncdiffusion_model import SyncDiffusion
 from syncdiffusion.utils import seed_everything
 
 def run_inference(
-        prompt: str, 
-        height: int = 512, 
+        prompt: str,  
         width: int = 2048,
         sync_weight: float = 20.0,
-        sync_decay_rate: float = 0.95,
-        sync_freq: int = 1,
         sync_thres: int = 5,
         seed: int = 0
     ):
@@ -81,7 +78,7 @@ if __name__=="__main__":
         )
 
         ips = [prompt, width, sync_weight, sync_thres, seed]
-        run_button.click(fn=run_inference(), inputs=ips, outputs=[result_gallery])
+        run_button.click(fn=run_inference, inputs=ips, outputs=[result_gallery])
 
     demo.queue(max_size=30)
     demo.launch()
