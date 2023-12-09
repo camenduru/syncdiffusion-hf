@@ -101,4 +101,4 @@ if __name__=="__main__":
         run_button.click(fn=run_inference, inputs=ips, outputs=[result_gallery])
 
     demo.queue(max_size=30)
-    demo.launch()
+    demo.launch(share=True)
